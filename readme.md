@@ -23,7 +23,7 @@ za [directory_path or file_number]
 ```
 
 # Note for V0.1
-Nano Editor: The script uses the Nano text editor to open files. Ensure that Nano is installed on your system for the full functionality of the script. I will add a system were you can add you own editor of your choosing [Prime](https://www.youtube.com/@ThePrimeagen), for V0.1 it's just nano
+Nano Editor: The script uses the Nano text editor to open files. Ensure that Nano is installed on your system for the full functionality of the script. I will add a system were you can add you own editor, so, don't worry[Mr Prime](https://www.youtube.com/@ThePrimeagen), for V0.1 it's just nano
 
 #### Installation
 
