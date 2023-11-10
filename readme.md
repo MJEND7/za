@@ -1,14 +1,15 @@
-```markdown
 # ZA - Zoom Around the terminal
 
+```
  ________  ________     
 |\_____  \|\   __  \    
  \|___/  /\ \  \|\  \   
      /  / /\ \   __  \  
     /  /_/__\ \  \ \  \ 
    |\________\ \__\ \__\
-    \|_______|\|__|\|__|  
-
+    \|_______|\|__|\|__|               
+```
+                        
 The **ZA** terminal utility is a Bash based system list files and directories within a specified directory and provide the option to navigate to a specific directory or open a file using the nano text editor.
 
 #### Usage
@@ -22,7 +23,7 @@ za [directory_path or file_number]
 ```
 
 # Note for V0.1
-Nano Editor: The script uses the Nano text editor to open files. Ensure that Nano is installed on your system for the full functionality of the script. I will add a system were you can add you own editor of your choosing Prime, for V0.1 it's just nano
+Nano Editor: The script uses the Nano text editor to open files. Ensure that Nano is installed on your system for the full functionality of the script. I will add a system were you can add you own editor of your choosing [Prime](https://www.youtube.com/@ThePrimeagen), for V0.1 it's just nano
 
 #### Installation
 
