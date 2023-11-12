@@ -18,9 +18,9 @@ listFilesAndDirectories() {
 
             # Check if the entry is a directory
             if [ -d "$entry" ]; then
-                echo "[$((++i))][DIR] $entry_name"
+                echo "[$((++i))][+] $entry_name"
             else
-                echo "[$((++i))][FIL] $entry_name"
+                echo "[$((++i))][-] $entry_name"
             fi
         done
     else
@@ -37,22 +37,28 @@ moveToDirectory() {
 
     # Check if the path is a directory
     if [ -d "$path" ]; then
-        # Find the selected entry
-        for entry in "$path"/*; do
-            # Extract the entry name
-            entry_name=$(basename "$entry")
+        if [ "$name" = ".." ]; then
+            found=1
+            targetPath=".."
+        else
+            # Find the selected entry
+            for entry in "$path"/*; do
+                # Extract the entry name
+                entry_name=$(basename "$entry")
 
-            # Ignore entries "." and ".."
-            if [ "$entry_name" = "." ] || [ "$entry_name" = ".." ]; then
-                continue
-            fi
+                # Ignore entries "." and ".."
+                if [ "$entry_name" = "." ] || [ "$entry_name" = ".." ]; then
+                    continue
+                fi
 
-            if [ $((++i)) -eq "$name" ] || [ "$entry_name" = "$name" ]; then
-                found=1
-                targetPath="$entry"
-                break
-            fi
-        done
+                if [ "$((++i))" == "$name" ] || [ "$entry_name" = "$name" ]; then
+                    found=1
+                    targetPath="$entry"
+                    break
+                fi
+            done
+        fi
+
     else
         echo "Error: Not a directory - $path"
         return 1
@@ -76,12 +82,35 @@ moveToDirectory() {
     fi
 }
 
+showHelp() {
+    echo "
+ ________  ________     
+|\_____  \|\   __  \    
+ \|___/  /\ \  \|\  \   
+     /  / /\ \   __  \  
+    /  /_/__\ \  \ \  \ 
+   |\________\ \__\ \__\
+
+    \|_______|\|__|\|__|
+"
+    echo "-----------------------------------------------------------------------------------"
+    echo "  za                   - List files and directories in the current directory."
+    echo "  za [name | number]   - Move to the specified directory or open the file with nano."
+    echo "                         Use '+' to indicate a folder and '-' for a file."
+    echo ""
+    echo "  za help              - Show this help message."
+    echo ""
+    echo "-----------------------------------------------------------------------------------"
+}
+
 main() {
     path="."
 
     if [ "$#" -eq 0 ]; then
         listFilesAndDirectories "$path"
-    elif [[ "$1" =~ ^[0-9]+$ ]]; then
+    elif [ "$1" = "help" ]; then
+        showHelp
+    elif [[ -n "$1" ]]; then
         moveToDirectory "$path" "$1"
     else
         echo "Usage: $0 [directory_path]"
@@ -91,4 +120,3 @@ main() {
 
 # Run the main function with command line arguments
 main "$@"
-
