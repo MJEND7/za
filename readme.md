@@ -94,4 +94,3 @@ alias za="source /usr/local/bin/za"
 creates a shortcut command `za` that, when executed, is equivalent to running `source /usr/local/bin/za`. This line is part of your makefile and helps set up a convenient way to run your Bash script.
 
 The makefile provides two targets - `install` and `uninstall`. The `install` target sets up the necessary permissions, copies the script to the system's bin directory, creates an alias for 'za', and updates the bash configuration. The `uninstall` target removes the script, unaliases 'za', and updates the bash configuration accordingly.
-```
