@@ -59,7 +59,7 @@ To install **ZA**, follow these steps:
 
    ```bash
    git clone https://github.com/MJEND7/za.git
-   cd https://github.com/MJEND7/za.git
+   cd za
    ```
 
 2. Run the installation:
