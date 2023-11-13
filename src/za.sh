@@ -1,5 +1,23 @@
 #!/bin/bash
 
+CONFIG_FILE="../za_config"
+
+# Check if the configuration file exists
+if [ -f "$CONFIG_FILE" ]; then
+    # Source the configuration file to set the EDITOR_COMMAND
+    source "$CONFIG_FILE"
+else
+    # If the configuration file doesn't exist, create it with the default editor command
+    echo "EDITOR_COMMAND=nano" >"$CONFIG_FILE"
+    source "$CONFIG_FILE"
+fi
+
+VERSION="0.2"
+
+showVersion() {
+    echo "v$VERSION"
+}
+
 listFilesAndDirectories() {
     path="$1"
     i=0
@@ -74,7 +92,7 @@ moveToDirectory() {
             }
         else
             echo "Opening file with nano: $targetPath"
-            nano "$targetPath"
+            $EDITOR_COMMAND "$targetPath" # Use the configured editor command
         fi
     else
         echo "Error: Directory or file not found"
@@ -110,6 +128,18 @@ main() {
         listFilesAndDirectories "$path"
     elif [ "$1" = "help" ]; then
         showHelp
+    elif [ "$1" = "-v" ] || [ "$1" = "--version" ]; then
+        showVersion
+    elif [[ "$1" = "-ce" ]]; then
+        # Check if the editor command is provided
+        if [ -n "$2" ]; then
+            # Update the configuration file with the new editor command
+            echo "EDITOR_COMMAND=$2" >"$CONFIG_FILE"
+            source "$CONFIG_FILE"
+        else
+            echo "Error: No editor command provided"
+            return 1
+        fi
     elif [[ -n "$1" ]]; then
         moveToDirectory "$path" "$1"
     else
