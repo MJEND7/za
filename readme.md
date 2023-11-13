@@ -10,7 +10,7 @@
     \|_______|\|__|\|__|               
 ```
                         
-The **ZA** terminal utility is a Bash-based system for listing files and directories within a specified directory and provides the option to navigate to a specific directory or open a file using the nano text editor.
+The **ZA** terminal utility is a Bash-based system for listing files and directories within a specified directory and provides the option to navigate to a specific directory or open a file using the configured text editor.
 
 #### Usage
 
@@ -18,7 +18,7 @@ The **ZA** terminal utility is a Bash-based system for listing files and directo
 # List files and directories in the current directory
 za
 
-# Move to the directory or open the file with nano
+# Move to the directory or open the file with the configured text editor
 za [directory_path or file_number]
 ```
 
@@ -28,7 +28,10 @@ za [directory_path or file_number]
 - Execute `za` to list files and directories in the current directory.
 
 **Navigate or Open:**
-- Execute `za [directory_path or file_number]` to navigate to the specified directory or open the file with nano. Use '+' to indicate a folder and '-' for a file.
+- Execute `za [directory_path or file_number]` to navigate to the specified directory or open the file with the configured text editor. Use '+' to indicate a folder and '-' for a file.
+
+**Configuration:**
+- Execute `za -ce [editor_command]` to set the default text editor command. For example, `za -ce vim` sets the default editor to Vim.
 
 **Show Help:**
 - Execute `za help` to display this help message.
@@ -42,11 +45,11 @@ $ za
 [3][+] Pictures
 ```
 
-Enter `za 1` to move to the 'Documents' directory or `za 2` to open 'notes.txt' with `nano`.
+Enter `za 1` to move to the 'Documents' directory or `za 2` to open 'notes.txt' with the configured text editor.
 
 ### Note for V0.1
 
-**Nano Editor:** The script uses the Nano text editor to open files. Ensure that Nano is installed on your system for the full functionality of the script. I will add a system were you can add you own editor, so, don't worry [Mr Prime](https://www.youtube.com/@ThePrimeagen), but for V0.1 it's just nano...
+**Text Editor:** The script uses the configured text editor to open files. Ensure that your desired text editor is installed on your system for the full functionality of the script.
 
 #### Installation
 
@@ -55,8 +58,8 @@ To install **ZA**, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/MJEND7/za.git
+   cd https://github.com/MJEND7/za.git
    ```
 
 2. Run the installation:
