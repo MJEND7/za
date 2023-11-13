@@ -12,6 +12,9 @@
                         
 The **ZA** terminal utility is a Bash-based system for listing files and directories within a specified directory and provides the option to navigate to a specific directory or open a file using the configured text editor.
 
+### Why?
+I've spent considerable time working on deployments, and the constant need to use multiple commands to navigate the file system and deal with files like "config_bak_whatever.json" is a flipping pain. These files and folders are pretty mcuh lists so why couldn't simply use an index to 'cd' into them. This frustration inspired the creation of ***za***, initially intended for just a better way to open folders expanded to include text editor configuration that eliminated the need for an extra command to open files; I want ***za*** to handle that. While it's a work in progress, its current simplicity efficiently accomplishes the task. I'm eager to further develop and share the concept of streamlining terminal tools and tools in general for faster and more efficient workflows.
+
 #### Usage
 
 ```bash
